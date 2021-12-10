@@ -8,6 +8,12 @@ const cors = require('cors')
 /*  create the server and define the port */ 
 const server = express() 
 const port = process.env.PORT || 8000 
+
+/* import routes from route.js */
+const testRouter = require('./route')
+
+/* tell the server to use that router and allows us to use it using ‘/test’ route */
+server.use('/test', testRouter)
  
 /*  use cors and express.json (which a body-parser for incoming requests) */ 
 server.use(cors()) 
@@ -22,3 +28,5 @@ server.get('/', (req, res) => {
 server.listen(port, () => { 
     console.log(`\n=== Server listening on port ${port} ===\n`) 
 })
+
+
